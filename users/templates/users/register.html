@@ -1,0 +1,29 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Sign Up</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="display-6 border-bottom mx-2 pb-2">Sign Up</h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col" style="padding: 10px;">
+            {{ form|crispy }}
+        </div>
+    </div>
+    <div style="margin-left: 10px;" class="text-muted">
+      Password suggestion: {{ password }}
+    </div>
+    <div style="padding: 10px;">
+        <button class="btn btn-outline-info" type="submit">Sign Up</button>
+    </div>
+</form>
+<div class="border-top pt-3">
+    <small style="padding: 10px;">
+        Have an account? <a class="ml-2 fw-bold text-decoration-none" href="{% url 'login' %}">LOG IN</a>
+    </small>
+</div>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends "scanEngine/base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="mt-4"></div>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} text-center">
+    {{ message|safe }}
+</div>
+{% endfor %}
+{% endif %}
+
+<style>
+div.card {
+        background: #212529
+    }
+</style>
+
+{% if user.is_authenticated %}
+<div class="text-center mb-4">
+<button type="button" class="btn btn-primary">
+    <span style="font-weight: bold;">Logged in as </span><span style="font-size: 12px;" class="badge bg-secondary">{{ context.username }}</span>
+</button>
+</div>
+{% endif %}
+
+<div class="row border-bottom">
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/subdomain.svg' %}" height="24px" width="24px" class="me-2">
+                Subdomain
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.subdomain|length }} Subdomain Scan</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'scan-view' 'Subdomain' %}">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/directory.svg' %}" height="24px" width="24px" class="me-2">
+                Directory BruteForce
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.directory|length }} Directory BruteForce Scan</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'scan-view' 'Dirsearch' %}">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/wayback.svg' %}" height="24px" width="24px" class="me-2">
+                Wayback URLs
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.wayback|length }} Wayback Scan</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'scan-view' 'Wayback URL' %}">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/jsurls.svg' %}" height="24px" width="24px" class="me-2">
+                JS URLs Discovery
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.jsfile|length }} JS Discovery Scan</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'scan-view' 'JS File Discovery' %}">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/secret.svg' %}" height="24px" width="24px" class="me-2">
+                Secret/API Keys
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.secrets|length }} Secret Keys Scans</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'scan-view' 'Secret' %}">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/linkfinder.svg' %}" height="24px" width="24px" class="me-2">
+                Links From JS Files
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.endpoint|length }} LinkFinder Scan</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'scan-view' 'Endpoint from JS' %}">View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/target-option.svg' %}" height="24px" width="24px" class="me-2">
+                Targets
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.scan_info|length }} Targets</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'targets' %}">View</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xl-3 col-md-6">
+        <div class="card text-white mb-3" style="max-width: 25rem;">
+            <div class="card-header">
+                <img src="{% static 'scanEngine/scan.svg' %}" height="24px" width="24px" class="me-2">
+                Scans
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ context.scans|length }} Scans</h5>
+            <a class="link-white card-footer pt-1" href="{% url 'dash-scan' %}">View</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+            <div>
+                <a href="#">Privacy Policy</a>
+                &middot;
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+</body>
+
+</html>
