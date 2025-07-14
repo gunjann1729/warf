@@ -115,6 +115,10 @@ and now your app is ready to launch at http://127.0.0.1:8000
 python -c "import secrets; print(secrets.token_urlsafe())"
 ```
  
+ <!-- CONTRIBUTING -->
+## Contributing
+
+If you want to contribute to this project and make it better, your help is very welcome. As this is my first ever project in Django, there could exist a lot of caveats and other coding related issues. Your contribution to this project helps me to learn and inspire to build more awesome projects in future. Contributing is also a great way to learn more about social coding on Github, new technologies and and their ecosystems. Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements and Credits
