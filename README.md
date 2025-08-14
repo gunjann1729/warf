@@ -76,7 +76,7 @@ $ source <virtual env path>/bin/activate
 ```
 3) Clone this repository:
 ```
-$ git clone https://github.com/iamnihal/warf.git
+$ git clone https://github.com/gunjann1729/warf.git
 ````
 4) Install the requirements:
 ```
